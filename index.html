@@ -1,113 +1,540 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 24.2.0.3 (Windows)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="00:00:00"/>
-	<style type="text/css">
-		@page { size: 8.5in 11in; margin: 1in }
-		p { line-height: 115%; text-align: left; orphans: 2; widows: 2; margin-bottom: 0.1in; direction: ltr; background: transparent }
-		a:link { color: #000080; text-decoration: underline }
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kate &amp; Winn | October 10, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Parisienne&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7f3e8;
+    --cream-deep:#efe8d6;
+    --moss:#4a5a38;
+    --moss-deep:#333f26;
+    --sage:#94a57c;
+    --forest:#2c3620;
+    --wildflower:#b5652f;
+    --gold:#c9a868;
+    --ink:#3a3428;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    color:var(--moss-deep);
+  }
+  .script{
+    font-family:'Parisienne', cursive;
+    font-weight:400;
+    color:var(--wildflower);
+  }
+  a{color:inherit;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.35em;
+    font-size:0.72rem;
+    color:var(--sage);
+    font-weight:500;
+  }
+  .wrap{
+    flex-direction: row;
+    max-width:880px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,243,232,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(74,90,56,0.15);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+  }
+  nav .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.3rem;
+    letter-spacing:0.05em;
+    color:var(--moss-deep);
+  }
+  nav ul{
+    list-style:none;
+    display:flex; gap:28px;
+  }
+  nav a{
+    text-decoration:none;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--moss);
+    transition:color .2s;
+  }
+  nav a:hover{color:var(--wildflower);}
+  .nav-toggle{display:none;}
+  @media (max-width:680px){
+    nav ul{
+      position:fixed; top:56px; left:0; right:0;
+      flex-direction:column; align-items:center; gap:18px;
+      background:var(--cream);
+      padding:24px 0 30px;
+      transform:translateY(-130%);
+      transition:transform .3s ease;
+      border-bottom:1px solid rgba(74,90,56,0.15);
+    }
+    nav ul.open{transform:translateY(0);}
+    .nav-toggle{
+      display:block; background:none; border:none;
+      font-size:1.4rem; color:var(--moss-deep); cursor:pointer;
+    }
+  }
+
+  /* ---------- DIVIDER SPRIG ---------- */
+  .sprig{
+    display:flex; justify-content:center; align-items:center;
+    margin:8px auto 0;
+    opacity:0.9;
+  }
+  .sprig svg{width:120px; height:auto;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; flex-direction:row; align-items:center; justify-content:center;
+    text-align:center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(148,165,124,0.25), transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    padding:120px 24px 90px;
+    overflow:hidden;
+    gap: 400px;
+  }
+  header.hero .frame-top, header.hero .frame-bottom{
+    position:absolute; left:0; right:0; width:100%;
+    pointer-events:none;
+  }
+  header.hero .frame-top{top:0;}
+  header.hero .frame-bottom{bottom:0; transform:scaleY(-1);}
+  .hero-content{text-align: left;}
+  .hero-eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.4em;
+    font-size:0.75rem;
+    color:var(--sage);
+    margin-bottom:22px;
+  }
+  .hero-names{
+    font-size:clamp(3rem, 9vw, 6rem);
+    line-height:1;
+    color:var(--moss-deep);
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    justify-content:left;
+    gap:0.25em;
+    flex-wrap:wrap;
+  }
+  .hero-names .amp{
+    font-family:'Parisienne', cursive;
+    color:var(--wildflower);
+    font-size:0.55em;
+    padding:0 0.05em;
+  }
+  .hero-date{
+    margin-top:26px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.4rem;
+    letter-spacing:0.08em;
+    color:var(--moss);
+  }
+  .hero-place{
+    margin-top:8px;
+    font-size:0.95rem;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    opacity:0.75;
+  }
+  .hero-cta{
+    margin-top:40px;
+    display:inline-block;
+    padding:14px 38px;
+    border:1px solid var(--moss);
+    border-radius:2px;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:0.75rem;
+    color:var(--moss-deep);
+    transition:background .25s, color .25s;
+  }
+  .hero-cta:hover{background:var(--moss); color:var(--cream);}
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:100px 0 90px;
+    position:relative;
+  }
+  section.alt{
+    background:var(--cream-deep);
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(2.1rem, 4.5vw, 3rem);
+    margin-top:14px;
+    font-style:italic;
+  }
+
+  /* Details cards */
+  .details-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:36px;
+  }
+  @media (max-width:680px){
+    .details-grid{grid-template-columns:1fr;}
+  }
+  .detail-card{
+    background:var(--cream);
+    border:1px solid rgba(74,90,56,0.22);
+    border-radius:4px;
+    padding:38px 30px;
+    text-align:center;
+  }
+  section.alt .detail-card{background:var(--cream);}
+  .detail-card .icon{
+    width:46px; height:46px; margin:0 auto 18px;
+    color:var(--wildflower);
+  }
+  .detail-card h3{
+    font-size:1.5rem;
+    margin-bottom:10px;
+  }
+  .detail-card .when{
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--sage);
+    margin-bottom:14px;
+  }
+  .detail-card p{font-size:0.95rem; color:var(--ink); opacity:0.85;}
+
+  /* Wedding */
+  .wedding{
+    position:relative;
+    min-height:100vh;
+    display:flex; flex-direction:row; align-items:center; justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    gap: 200px;
+  }
+
+  /* Schedule timeline */
+  .timeline{
+    max-width:560px;
+    margin:0 auto;
+  }
+  .location{text-align: center;}
+  .t-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:22px;
+    padding:20px 0;
+    border-bottom:1px dashed rgba(74,90,56,0.3);
+  }
+  .t-item:last-child{border-bottom:none;}
+  .t-time{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.25rem;
+    color:var(--wildflower);
+    text-align:right;
+  }
+  .t-what h4{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:1.2rem;
+    color:var(--moss-deep);
+    margin-bottom:3px;
+  }
+  .t-what p{font-size:0.9rem; opacity:0.8;}
+
+  /* Travel */
+  .travel-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    text-align:center;
+  }
+  @media (max-width:680px){
+    .travel-grid{grid-template-columns:1fr;}
+  }
+  .travel-grid h3{font-size:1.3rem; margin-bottom:8px;}
+  .travel-grid p{font-size:0.92rem; opacity:0.82;}
+
+  /* RSVP */
+  .rsvp-box{
+    max-width:520px;
+    margin:0 auto;
+    background:var(--cream);
+    border:1px solid rgba(74,90,56,0.22);
+    border-radius:4px;
+    padding:46px 40px;
+    text-align:center;
+  }
+  .rsvp-box p.lead{margin-bottom:30px; opacity:0.85;}
+  form{display:flex; flex-direction:column; gap:18px; text-align:left;}
+  label{
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--moss);
+    margin-bottom:6px;
+    display:block;
+  }
+  input[type="text"], input[type="email"], select, textarea{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid rgba(74,90,56,0.35);
+    border-radius:2px;
+    background:var(--cream-deep);
+    font-family:'Jost', sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  textarea{resize:vertical; min-height:80px;}
+  .radio-row{
+    display:flex; gap:22px; font-size:0.9rem;
+  }
+  .radio-row label{
+    display:flex; align-items:center; gap:6px;
+    text-transform:none; letter-spacing:0; font-size:0.92rem;
+    color:var(--ink); margin:0;
+  }
+  button.submit{
+    margin-top:8px;
+    padding:14px;
+    background:var(--moss);
+    color:var(--cream);
+    border:none;
+    border-radius:2px;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.78rem;
+    cursor:pointer;
+    transition:background .25s;
+  }
+  button.submit:hover{background:var(--moss-deep);}
+  .form-note{
+    margin-top:16px;
+    font-size:0.78rem;
+    opacity:0.6;
+  }
+
+  /* Registry */
+  .registry-note{
+    max-width:560px;
+    margin:0 auto;
+    text-align:center;
+    opacity:0.85;
+  }
+  .registry-links{
+    display:flex; justify-content:center; gap:18px;
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+  .registry-links a{
+    padding:12px 26px;
+    border:1px solid var(--moss);
+    border-radius:2px;
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    color:var(--moss-deep);
+    transition:background .2s, color .2s;
+  }
+  .registry-links a:hover{background:var(--moss); color:var(--cream);}
+
+  /* Footer */
+  footer{
+    padding:70px 24px 50px;
+    text-align:center;
+    background:var(--forest);
+    color:var(--cream-deep);
+  }
+  footer .foot-names{
+    font-family:'Parisienne', cursive;
+    font-size:2.2rem;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+  footer p{font-size:0.85rem; opacity:0.75;}
+
+  .fade-in{
+    opacity:0; transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .fade-in.visible{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .fade-in{transition:none; opacity:1; transform:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
 </head>
-<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><p style="margin-bottom: 0in">
-<font size="3" style="font-size: 12pt"><b><span style="background: #fff2cc">Wedding
-Website Text</span></b></font></p>
-<p style="margin-bottom: 0in"><br/>
+<body>
 
-</p>
-<p style="margin-bottom: 0in">If we can add any pics i’ll share the
-real size versions of these 
-</p>
-<p style="margin-bottom: 0in"><img src="index_html_ffbb20e1.jpg" name="image4.jpg" align="bottom" width="164" height="218" border="0"/>
-<img src="index_html_a7bfe291.jpg" name="image1.jpg" align="bottom" width="163" height="218" border="0"/>
-<img src="index_html_eb33f2f7.jpg" name="image2.jpg" align="bottom" width="166" height="221" border="0"/>
-</p>
-<p style="margin-bottom: 0in"><br/>
+<nav>
+  <div class="wrap">
+    <div class="brand">KW &amp; WK</div>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.getElementById('navlinks').classList.toggle('open')">&#9776;</button>
+    <ul id="navlinks">
+      <li><a href="#wedding">WEDDING</a></li>
+      <li><a href="#reception">RECEPTION</a></li>
+      <li><a href="#registry">Registry</a></li>
+    </ul>
+  </div>
+</nav>
 
-</p>
-<p style="margin-bottom: 0in">Welcome to the wedding website for Winn
-and Kate! 
-</p>
-<p style="margin-bottom: 0in"><br/>
+<header class="hero">
+  <div class="frame-top">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,120 L120,80 L240,120 L360,60 L480,110 L600,70 L720,115 L840,65 L960,110 L1080,75 L1200,120" fill="none" stroke="#4a5a38" stroke-width="2" opacity="0.35"/>
+      <g fill="#94a57c" opacity="0.55">
+        <circle cx="150" cy="70" r="4"/><circle cx="330" cy="55" r="5"/><circle cx="540" cy="65" r="4"/>
+        <circle cx="750" cy="60" r="5"/><circle cx="960" cy="65" r="4"/><circle cx="1050" cy="70" r="4"/>
+      </g>
+      <g fill="#b5652f" opacity="0.7">
+        <circle cx="200" cy="90" r="3"/><circle cx="420" cy="80" r="3"/><circle cx="690" cy="90" r="3"/><circle cx="900" cy="85" r="3"/>
+      </g>
+    </svg>
+  </div>
 
-</p>
-<p style="margin-bottom: 0in">We will wed in a small private ceremony
-attended by immediate family on Oct. 9.</p>
-<p style="margin-bottom: 0in"><br/>
+  <div class="hero-pic">
+    <img src="winnandkate1.jpg" alt="Kate and Winn" width="auto" height="450">
 
-</p>
-<p style="margin-bottom: 0in">Our reception to celebrate love with
-friends and family is slated for Saturday, Oct. 10, indoors at
-Orchard Homes Country Life Club, 2537 S 3rd St W, Missoula, MT,
-59804.</p>
-<p style="margin-bottom: 0in"><br/>
+  </div>
 
-</p>
-<p style="margin-bottom: 0in">Would you like to participate in toasts
-or pitch in with party tasks? <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhNh2C6G2eYNF2m_qUMqz_uO0lot6lkvGnoHYuvHSqAOK7mg/viewform?usp=publish-editor"><font color="#1155cc"><u>Sign
-up here</u></font></a>.</p>
-<p style="margin-bottom: 0in"><br/>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Welcome to the Wedding Website of</div>
+    <div class="sprig">
+      <svg viewBox="0 0 140 46" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#94a57c" stroke-width="1.4">
+        <path d="M70,23 C55,10 30,10 10,23 M70,23 C85,10 110,10 130,23"/>
+        <path d="M70,23 C60,8 60,-2 65,-8" stroke="#4a5a38" opacity="0"/>
+        <circle cx="20" cy="20" r="2.5" fill="#b5652f" stroke="none"/>
+        <circle cx="40" cy="14" r="2.5" fill="#c9a868" stroke="none"/>
+        <circle cx="100" cy="14" r="2.5" fill="#c9a868" stroke="none"/>
+        <circle cx="120" cy="20" r="2.5" fill="#b5652f" stroke="none"/>
+      </svg>
+    </div>
+    <h1 class="hero-names">Kate <span class="amp">&amp;</span> Winn</h1>
+  </div>
 
-</p>
-<p style="margin-bottom: 0in">If you received a mailed invitation, we
-assume you’re coming - please let us know if anything changes.</p>
-<p style="margin-bottom: 0in"><br/>
+  <div class="frame-bottom">
+    <svg viewBox="0 0 1200 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,120 L120,80 L240,120 L360,60 L480,110 L600,70 L720,115 L840,65 L960,110 L1080,75 L1200,120" fill="none" stroke="#4a5a38" stroke-width="2" opacity="0.35"/>
+      <g fill="#94a57c" opacity="0.55">
+        <circle cx="180" cy="70" r="4"/><circle cx="390" cy="55" r="5"/><circle cx="600" cy="65" r="4"/>
+        <circle cx="810" cy="60" r="5"/><circle cx="1020" cy="65" r="4"/>
+      </g>
+    </svg>
+  </div>
+</header>
 
-</p>
-<p style="margin-bottom: 0in"><br/>
+<section id="wedding" class="wedding">
+  <div class="content">
+    <h2>Wedding</h2>
+    <h3>We will wed in a small private ceremony attended by immediate family at the Missoula County Courthouse on Friday, October 9th.</h3>
+  </div>
+  </div class="pic">
+    <img src="winnandkate2.jpg" alt="Kate and Winn" width="auto" height="450">
+  </div>
+</section>
 
-</p>
-<p style="margin-bottom: 0in"><b>Location</b></p>
-<p style="margin-bottom: 0in">Orchard Homes is a short drive or bike
-ride from the center of town. There is a small parking lot and
-overflow street parking. Cycling is also encouraged via the Milwaukee
-Trail, which is a paved and separated bike/ped path! Here is a
-<a href="https://ridewithgps.com/routes/56664003"><font color="#1155cc"><u>RideWithGPS
-cycling route</u></font></a> to the venue from downtown.</p>
-<p style="margin-bottom: 0in"><br/>
+<section id="reception" class="fade-in">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Reception</h2>
+    </div>
+    <div class="location">
+      <h3>Located at Orchard Homes Country Life Club, 2537 S 3rd St W, Missoula, MT, 59804
+      </h3>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-time">4-6 PM</div>
+        <div class="t-what"><h4>Drinks & Hors d'ouevres</h4><p>with Special Guest Entertainment</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">6 PM</div>
+        <div class="t-what"><h4>Dinner Buffet</h4><p>with Meat and Vegetarian Options</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">7 PM</div>
+        <div class="t-what"><h4>Cake!</h4><p>followed by Toasts and Speeches </p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">8-10 PM</div>
+        <div class="t-what"><h4>Dancing</h4><p>DJed by TBD</p></div>
+      </div>
+      <div class="t-item">
+        <div class="t-time">10 PM</div>
+        <div class="t-what"><h4>Cleanup & After Party</h4><p>... Bowling Alley Karaoke, Anyone?</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</p>
-<p style="margin-bottom: 0in"><b>Attire</b></p>
-<p style="margin-bottom: 0in">Whatever feels dressy to you. Evenings
-can be very chilly in October in Western Montana, so plan
-accordingly.</p>
-<p style="margin-bottom: 0in"><br/>
 
-</p>
-<p style="margin-bottom: 0in"><b>Reception Schedule</b></p>
-<p style="margin-bottom: 0in"><i>All times are approximate.</i></p>
-<p style="margin-bottom: 0in">Hors d'oeuvres and drinks with special
-guest entertainment: 4-6 PM</p>
-<p style="margin-bottom: 0in">Dinner buffet with meat and veggie
-options: 6 PM</p>
-<p style="margin-bottom: 0in">Cake: 7 PM</p>
-<p style="margin-bottom: 0in">Toasts and speeches: 7:15 PM</p>
-<p style="margin-bottom: 0in">Dancing: 8 PM-10 PM</p>
-<p style="margin-bottom: 0in">10 PM: Cleanup and after party…
-bowling alley karaoke, anyone?</p>
-<p style="margin-bottom: 0in"><br/>
+<section id="registry" class="alt fade-in">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">With love</div>
+      <h2>Registry</h2>
+    </div>
+    <p class="registry-note">Your presence at our wedding is the greatest gift of all. For those who've asked, we've registered a few places below to help us build our home in the mountains.</p>
+    <div class="registry-links">
+      <a href="#">Crate &amp; Barrel</a>
+      <a href="#">Our Honeymoon Fund</a>
+      <a href="#">West Elm</a>
+    </div>
+  </div>
+</section>
 
-</p>
-<p style="margin-bottom: 0in"><b>Gifts</b></p>
-<p style="margin-bottom: 0in">We only hope for your presence, but we
-welcome contributions to our honeymoon fund.</p>
-<p style="margin-bottom: 0in"><br/>
+<footer>
+  <div class="foot-names">Emma &amp; James</div>
+  <p>September 12, 2026 &middot; Crested Butte, Colorado</p>
+  <p style="margin-top:18px;">Made with love, for the mountains and wildflowers.</p>
+</footer>
 
-</p>
-<p style="margin-bottom: 0in">Cash, check, or Venmo gratefully
-accepted.</p>
-<p style="margin-bottom: 0in"><br/>
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  faders.forEach(f=>io.observe(f));
 
-</p>
-<p style="margin-bottom: 0in">Checks can be made to: 
-</p>
-<p style="margin-bottom: 0in">Kate Whittle</p>
-<p style="margin-bottom: 0in">231 E Franklin St</p>
-<p style="margin-bottom: 0in">Missoula MT 59801</p>
-<p style="margin-bottom: 0in"><img src="index_html_9eea056b.png" name="image3.png" align="bottom" width="356" height="406" border="0"/>
-</p>
+  document.querySelectorAll('#navlinks a').forEach(a=>{
+    a.addEventListener('click', ()=>document.getElementById('navlinks').classList.remove('open'));
+  });
+</script>
+
 </body>
 </html>
