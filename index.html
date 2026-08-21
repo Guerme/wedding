@@ -111,6 +111,7 @@
 
   /* ---------- HERO ---------- */
   header.hero{
+    max-width: 100%;
     position:relative;
     min-height:100vh;
     display:flex; flex-direction:row; align-items:center; justify-content:center;
@@ -120,7 +121,7 @@
       linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
     padding:120px 24px 90px;
     overflow:hidden;
-    gap: 400px;
+    gap: 200px;
   }
   header.hero .frame-top, header.hero .frame-bottom{
     position:absolute; left:0; right:0; width:100%;
@@ -236,12 +237,16 @@
 
   /* Wedding */
   .wedding{
+    max-width: 100%;
     position:relative;
     min-height:100vh;
     display:flex; flex-direction:row; align-items:center; justify-content:center;
     text-align:center;
     overflow:hidden;
     gap: 200px;
+  }
+  .text{
+    max-width: 500px;
   }
 
   /* Schedule timeline */
@@ -395,6 +400,7 @@
     .fade-in{transition:none; opacity:1; transform:none;}
     html{scroll-behavior:auto;}
   }
+
 </style>
 </head>
 <body>
@@ -457,11 +463,15 @@
 </header>
 
 <section id="wedding" class="wedding">
-  <div class="content">
+  <div class="section-head">
     <h2>Wedding</h2>
-    <h3>We will wed in a small private ceremony attended by immediate family at the Missoula County Courthouse on Friday, October 9th.</h3>
+    <div class="content">
+      <div class="text">
+        <h3>We will wed in a small private ceremony attended by immediate family at the Missoula County Courthouse on Friday, October 9th.</h3>
+      </div>
+    </div>
   </div>
-  </div class="pic">
+  </div class="wedding-pic">
     <img src="winnandkate2.jpg" alt="Kate and Winn" width="auto" height="450">
   </div>
 </section>
